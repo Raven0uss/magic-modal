@@ -1,13 +1,18 @@
 {
-  "name": "magic-modal",
-  "version": "1.0.0",
+  "name": "@raven0us/magic-react-modal",
+  "version": "1.0.1",
   "description": "ReactJS Modal - Project 14 OC DFE",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "private": false,
   "files": [
     "dist",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raven0uss/magic-modal.git"
+  },
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production babel src/ --out-dir dist --copy-files"
   },
@@ -23,5 +28,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Raven0uss/magic-modal/issues"
+  },
+  "homepage": "https://github.com/Raven0uss/magic-modal#readme",
+  "devDependencies": {}
 }
