@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// Styled component to manage the mask
 const Mask = styled.div`
   position: absolute;
   display: flex;
@@ -14,6 +15,7 @@ const Mask = styled.div`
   height: 100%;
 `;
 
+// Styled component to manage the container
 const ModalContainer = styled.div`
   width: 50%;
   min-width: 450px;
@@ -38,10 +40,12 @@ const MagicModal = ({
   maskColor,
   backgroundColor,
 }) => {
+  // Check if the modal is displayed or not. If no children inside JSX scope, it display nothing.
   if (!isOpen || children === undefined) return null;
   return (
     <Mask
       onClick={(e) => {
+        // Call the hooks func passed in props
         setOpen(false);
         onClose();
       }}
@@ -50,6 +54,7 @@ const MagicModal = ({
       }}
     >
       <ModalContainer
+        // Trigger the bubbling and skip it, to avoid the close modal when user interact inside container
         onClickCapture={(e) => e.stopPropagation()}
         style={{
           boxShadow: `2px 2px 12px ${maskColor}`,
@@ -66,15 +71,15 @@ MagicModal.propTypes = {
   children: PropTypes.node.isRequired,
 
   // Management
-  isOpen: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
-  onClose: PropTypes.func,
+  isOpen: PropTypes.bool.isRequired, // React useState value
+  setOpen: PropTypes.func.isRequired, // React useState func
+  onClose: PropTypes.func, // Callback executed when the modal has been closed
 
   // Mask
-  maskColor: PropTypes.string,
+  maskColor: PropTypes.string, // Personnalize the mask color
 
   // Modal Container
-  backgroundColor: PropTypes.string,
+  backgroundColor: PropTypes.string, // Personnalize the container background
 };
 
 MagicModal.defaultProps = {
